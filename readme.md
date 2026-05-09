@@ -40,7 +40,7 @@ Add Volt to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-volt = "0.1.0"
+volt-wasm = "0.1.0"
 ```
 
 ### Spawning Tasks
