@@ -1,5 +1,5 @@
 [package]
-name = "volt"
+name = "volt-wasm"
 version = "0.1.0"
 edition = "2024"
 description = "A lightweight, single-threaded async runtime targeting WASM"
