@@ -1,4 +1,4 @@
-# ⚡ Volt
+# ⚡ Volt WASM
 
 **A hyper-optimized, strictly single-threaded asynchronous runtime designed for WebAssembly (WASM).**
 
@@ -46,7 +46,7 @@ volt = "0.1.0"
 ### Spawning Tasks
 
 ```rust
-use volt::Runtime;
+use volt_wasm::Runtime;
 
 fn main() {
     // Initialize the single-threaded runtime

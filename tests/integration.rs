@@ -1,6 +1,6 @@
-use volt::{Delay, Runtime};
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, Instant};
+use volt_wasm::{Delay, Runtime};
 
 #[test]
 fn test_single_task_execution() {
@@ -78,7 +78,7 @@ fn test_join_waits_for_both() {
         let delay2 = Delay::new(Duration::from_millis(100));
 
         let start = Instant::now();
-        volt::future::join(delay1, delay2).await;
+        volt_wasm::future::join(delay1, delay2).await;
         let elapsed = start.elapsed();
 
         // Should wait for the longer delay.
@@ -105,11 +105,11 @@ fn test_select_returns_first() {
         let delay1 = Delay::new(Duration::from_millis(200));
         let delay2 = Delay::new(Duration::from_millis(50));
 
-        match volt::future::select(delay1, delay2).await {
-            volt::future::Either::Left(_) => {
+        match volt_wasm::future::select(delay1, delay2).await {
+            volt_wasm::future::Either::Left(_) => {
                 order_clone.lock().unwrap().push("first");
             }
-            volt::future::Either::Right(_) => {
+            volt_wasm::future::Either::Right(_) => {
                 order_clone.lock().unwrap().push("second");
             }
         }
