@@ -3,6 +3,8 @@ name = "volt"
 version = "0.1.0"
 edition = "2024"
 description = "A lightweight, single-threaded async runtime targeting WASM"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/iamfaiz123/volt"
 
 # wasm-pack requires both cdylib (for the .wasm output) and rlib (for tests)
 [lib]
