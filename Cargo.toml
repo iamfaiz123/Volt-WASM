@@ -1,0 +1,32 @@
+[package]
+name = "volt"
+version = "0.1.0"
+edition = "2024"
+description = "A lightweight, single-threaded async runtime targeting WASM"
+
+# wasm-pack requires both cdylib (for the .wasm output) and rlib (for tests)
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+log = "0.4"
+
+[dev-dependencies]
+env_logger = "0.11"
+tokio          = { version = "1", features = ["rt", "macros"] }
+futures        = "0.3"
+async-executor = "1.14"   # smol's LocalExecutor — WASM-compatible, !Send futures
+pollster       = "0.4"    # minimalist block_on — no spawn API, uses join_all
+
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
+criterion      = { version = "0.5", features = ["html_reports"] }
+
+# ── WASM tests ────────────────────────────────────────────────────────────────
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
+wasm-bindgen-test = "0.3"
+js-sys            = "0.3"
+web-sys           = { version = "0.3", features = ["console"] }
+
+[[bench]]
+name    = "runtime_bench"
+harness = false
