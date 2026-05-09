@@ -28,7 +28,7 @@ fn now_ms() -> f64 {
 /// Returns wall-clock time in milliseconds.
 fn time_volt(n: usize) -> f64 {
     let t0 = now_ms();
-    let mut rt = volt::Runtime::new();
+    let mut rt = volt_wasm::Runtime::new();
     for _ in 0..n {
         rt.spawn(async {});
     }
@@ -81,7 +81,7 @@ fn wasm_tasks_actually_run() {
     use std::rc::Rc;
 
     let counter = Rc::new(Cell::new(0usize));
-    let mut rt = volt::Runtime::new();
+    let mut rt = volt_wasm::Runtime::new();
 
     for _ in 0..100 {
         let c = counter.clone();

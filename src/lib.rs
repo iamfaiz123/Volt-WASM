@@ -7,7 +7,7 @@
 //! ## Quick Start
 //!
 //! ```rust
-//! use volt::{Runtime, Delay};
+//! use volt_wasm::{Runtime, Delay};
 //! use std::time::Duration;
 //!
 //! let mut rt = Runtime::new();
@@ -29,11 +29,11 @@ mod waker;
 
 // ── Public re-exports ────────────────────────────────────────────────────────
 
+pub use arena::TaskId;
 pub use delay::Delay;
 pub use runtime::Runtime;
-pub use arena::TaskId;
 
 /// Future combinators: [`join`], [`select`], [`map`], and the [`Either`] enum.
 pub mod future {
-    pub use crate::combinator::{join, map, select, Either, Join, Map, Select};
+    pub use crate::combinator::{Either, Join, Map, Select, join, map, select};
 }

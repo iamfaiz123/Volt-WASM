@@ -6,7 +6,7 @@ use crate::executor::Executor;
 /// High-level single-threaded runtime — a thin wrapper around [`Executor`].
 ///
 /// ```rust
-/// use volt::Runtime;
+/// use volt_wasm::Runtime;
 ///
 /// let mut rt = Runtime::new();
 /// rt.spawn(async { println!("hello from volt!"); });

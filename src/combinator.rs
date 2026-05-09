@@ -78,7 +78,7 @@ where
 /// Wait for **both** futures to complete, returning a tuple of their results.
 ///
 /// ```ignore
-/// let (a, b) = volt::future::join(future_a, future_b).await;
+/// let (a, b) = volt_wasm::future::join(future_a, future_b).await;
 /// ```
 pub fn join<A, B>(a: A, b: B) -> Join<A, B>
 where
@@ -144,7 +144,7 @@ where
 /// Return the result of whichever future completes **first**.
 ///
 /// ```ignore
-/// match volt::future::select(fast, slow).await {
+/// match volt_wasm::future::select(fast, slow).await {
 ///     Either::Left(val)  => { /* fast finished first */ }
 ///     Either::Right(val) => { /* slow finished first */ }
 /// }
@@ -196,7 +196,7 @@ where
 /// Transform the output of `future` using the closure `f`.
 ///
 /// ```ignore
-/// let doubled = volt::future::map(async { 21 }, |x| x * 2).await;
+/// let doubled = volt_wasm::future::map(async { 21 }, |x| x * 2).await;
 /// assert_eq!(doubled, 42);
 /// ```
 pub fn map<F, Func, T>(future: F, f: Func) -> Map<F, Func>
@@ -204,10 +204,7 @@ where
     F: Future + Unpin,
     Func: FnOnce(F::Output) -> T + Unpin,
 {
-    Map {
-        future,
-        f: Some(f),
-    }
+    Map { future, f: Some(f) }
 }
 
 // ---------------------------------------------------------------------------

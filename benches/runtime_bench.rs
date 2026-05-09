@@ -33,7 +33,7 @@ fn bench_volt(c: &mut Criterion) {
     for &n in COUNTS {
         g.bench_with_input(BenchmarkId::from_parameter(n), &n, |b, &n| {
             b.iter(|| {
-                let mut rt = volt::Runtime::new();
+                let mut rt = volt_wasm::Runtime::new();
                 for _ in 0..n {
                     rt.spawn(async { black_box(()); });
                 }

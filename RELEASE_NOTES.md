@@ -38,7 +38,7 @@ volt = "0.1.0"
 
 Initialize the runtime and spawn tasks:
 ```rust
-use volt::Runtime;
+use volt_wasm::Runtime;
 
 fn main() {
     let mut rt = Runtime::new();
